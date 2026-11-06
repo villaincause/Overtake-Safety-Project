@@ -1,0 +1,82 @@
+OVERTAKE SAFETY MODEL - HOW TO RUN IT
+=====================================
+
+WHAT IT DOES
+It looks at a video (or a webcam) and decides if it is safe to overtake.
+It prints one number whenever the situation changes:
+
+    1 = GREEN   no vehicle ahead - safe to pass
+    2 = SMALL   small vehicle ahead (bike, bicycle)
+    3 = BLUE    medium vehicle ahead (car, CNG, rickshaw, van ...)
+    4 = RED     large vehicle ahead (bus, pickup, truck)
+
+A vehicle counts as "ahead" when its bottom edge goes below the yellow
+"safety line" drawn on the video. If there are several, the biggest wins.
+
+WHAT YOU NEED
+- A Windows laptop or PC (any normal one is fine, a graphics card is NOT needed)
+- Internet, only for the one-time setup
+- About 2 GB of free disk space
+
+
+STEP 0 - Install Python (only if the laptop does not have it)
+  1. Go to https://www.python.org/downloads/ and download Python 3.12
+  2. Run the installer.
+  3. IMPORTANT: tick the box "Add python.exe to PATH" at the bottom, then click Install.
+
+STEP 1 - Unzip
+  Right-click the zip file > "Extract All". Do not run files from inside the zip.
+  Put the folder somewhere simple, like the Desktop.
+
+STEP 2 - One-time setup
+  Double-click   1_SETUP.bat
+  - If Windows says "Windows protected your PC": click "More info", then "Run anyway".
+  - Wait until it says SETUP COMPLETE (5-15 minutes). A lot of text is normal.
+  - You only ever do this once per computer.
+
+STEP 3 - Run the test video
+  Double-click   2_RUN_test_video.bat
+  - A black window opens (the numbers 1-4 appear there) and then a video window.
+  - The first start takes 10-30 seconds. This is normal.
+  - The video window shows boxes around vehicles, the yellow safety line, and
+    "CODE: n" in the top-left corner.
+
+STEP 4 (optional) - Run with a webcam
+  Plug in the webcam, then double-click   3_RUN_webcam.bat
+
+
+STEP 5 (optional) - Run with the Arduino LEDs
+  1. The Arduino sketch (arduino\OvertakeLEDs\OvertakeLEDs.ino) must already be uploaded.
+  2. Plug the Arduino into the laptop's USB port and wait a few seconds.
+  3. If you got this folder before the Arduino update, double-click 1_SETUP.bat once more
+     (it installs one extra small library). It is quick the second time.
+  4. Double-click   5_RUN_webcam_with_arduino.bat
+  5. The video window shows "ARDUINO: COMx" at the top-left when it is connected.
+     If the Arduino is not found, the program stops and says so.
+  The LEDs follow the numbers: 1 green, 2 small-vehicle LED, 3 blue, 4 red.
+  If the LEDs all blink together, the Arduino is not receiving data from the program.
+  Close the Arduino IDE Serial Monitor first, it blocks the connection.
+
+CONTROLS (click the video window first)
+  Move the safety line:  drag the "Safety line %" slider at the top,
+                         OR click / drag anywhere on the video,
+                         OR press W (up) and S (down)
+  Stop:                  press Q   (the line position is remembered for next time)
+
+
+IF SOMETHING GOES WRONG
+- "Python was not found": do Step 0 again and tick "Add python.exe to PATH".
+- Webcam does not open: close other apps that use the camera (Zoom, Teams,
+  the Camera app) and try again.
+- It looks slow or choppy: normal on weaker laptops. The numbers are still correct.
+- Anything else: double-click   4_CHECK_PC.bat   and send the file it creates
+  (diagnose_output.txt) together with a screenshot of the problem.
+
+
+MAC / LINUX (manual, in a terminal inside this folder)
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu   (Linux)
+  pip install torch torchvision                                                    (Mac)
+  pip install -r requirements.txt
+  python realtime.py --source test_video.mp4

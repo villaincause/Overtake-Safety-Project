@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = 'build/OvertakeLEDs.ino.hex'
+elf = 'build/OvertakeLEDs.ino.elf'
+rfc2217ServerPort = 4000

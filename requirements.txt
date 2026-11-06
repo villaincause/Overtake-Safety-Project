@@ -1,0 +1,9 @@
+# PyTorch is NOT listed here on purpose: install it first.
+#   PC with NVIDIA GPU : command from https://pytorch.org/get-started/locally/
+#   PC without NVIDIA  : pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# Use the SAME ultralytics version on every PC (check yours with: pip show ultralytics),
+# e.g.  pip install ultralytics==<your version>
+ultralytics>=8.3.0
+opencv-python
+pyyaml
+pyserial

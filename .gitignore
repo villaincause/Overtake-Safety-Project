@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+env/
+.env/
+.env.*
+!.env.example
+
+# Test, type-checking, and lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Generated training and inference artifacts
+runs/
+outputs/
+build/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.mp4
+
+# Local dataset files; keep dataset configuration and documentation
+data/*.zip
+data/dataset/train/
+data/dataset/valid/
+data/dataset/test/
+data/dataset/data_local.yaml
+
+# Large notebook with embedded outputs
+Colab File/OvertakeSafetyProject.ipynb
+
+# Packaged project archives
+*.zip

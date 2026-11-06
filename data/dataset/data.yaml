@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 11
+names: ['auto_rickshaw', 'bikes', 'bus', 'bycycle', 'cars', 'cng', 'mini_van', 'pickup', 'rickshaw', 'trucks', 'van']
+
+roboflow:
+  workspace: maliha-binta-sumaiya-s-workspace
+  project: traffic-car-segmentation-2
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/maliha-binta-sumaiya-s-workspace/traffic-car-segmentation-2/dataset/2
